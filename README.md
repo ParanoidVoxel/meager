@@ -1,6 +1,7 @@
 # Meager
 
 Meager is a tiny web framework built on the socketserver module in Python.
+
 [![Build Status](https://travis-ci.org/ParanoidVoxel/meager.svg?branch=master)](https://travis-ci.org/ParanoidVoxel/meager)
 
 ## Examples
