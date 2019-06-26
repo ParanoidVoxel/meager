@@ -16,6 +16,7 @@ app = meager.Server()
 @app.router.route("/")
 def index(request):
     return "<h1>Hello world!</h1>"
+app.serve()
 ```
 
 ### Example returning JSON
@@ -28,4 +29,5 @@ example_dict = {"key1": "val1", "key2": "val2"}
 def index(request):
     return example_dict # It can detect if you're sending a dictionary
                         # and automatically changes the "Content-Type:" header to application/json 
+app.serve()
 ```
