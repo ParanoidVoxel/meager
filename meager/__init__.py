@@ -1,3 +1,6 @@
+#
+# The main file for meager
+#
 import meager.router
 import meager.http
 import meager.logger
