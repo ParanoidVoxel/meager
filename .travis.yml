@@ -1,8 +1,16 @@
 dist: xenial
 language: python
 python:
-  - "3.7"
-  - "3.8"
-  - "nightly"
+- '3.7'
+- '3.8'
+- nightly
 script:
-  - "./.travis/build.sh"
+- "./.travis/build.sh"
+deploy:
+  provider: pypi
+  user: "vorap"
+  skip_existing: true
+  password:
+    secure: Ls3Jy0nEQ3J4hPUFqWFE8j/UBnKjyP+ZOZbRLimwB8uT5jmyCY1bAuCkFeL9U8grhnCRdkEMDOUnoascDHw7R6g5z0VFEr29CekhEy1+tLRMlb3NrqBKO33p3aXrblvSbpZhs0tl13+BEf6PjZBJnJcc7DP3KhzogS+tIK5ZMtjYb/NLzmK1phkaQhjKSyGU9G0UuIDdfSOSYQw2lLfbGy6g6hQ54qQRVkNPIu6vlSL6sDkTBaeF7DK2QqIHHGTf3kSM5UAv2gVcJaeeje3IFG3HjroTCv438xeeI9yzIMLDk+78lJjt+koGbelUEekEeX2CDsX6HclPxy+Qsae0L9170/4fjzGB0CV/mwtRk393xnxj7QnaBUb0Esq5AFBBqankEoJM58WcV0e92QMl+YTcY53rCxmLVxQoBaB1R7Jg8SgrTh2tAJncIso8QZ3lfJmhd2GWOnPVf4oR8FbEEEyqSKtD6Jkl3jyn7AOsPYZ3sBytif99QZS6k+Q/PHi1QiRA5LCMVT/Qf7MLdiNzvdKjpc3Zr49dZ5wrAsMb/puyHNbUln9AyAY76k6GXTb503xqcde01lYGmIWn8dRhgBDdCkokBzMQ6iXIQv/WSC7HQ5IWnlyTxFoXQKdk8YENaAbeaPZ7aZr1mAiC6spHf7nb6Sjk+ctN/JfAPgFpYKY=
+  on:
+    tags: true
