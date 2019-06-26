@@ -1,6 +1,3 @@
-#
-# The main file for meager
-#
 import meager.router
 import meager.http
 import meager.logger
@@ -29,7 +26,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
             self.request.sendall(b"HTTP/1.1 OK 404\r\nContent-Type: text/html\r\n\r\n<h1>404 not found</h1>")
 
 class Server(object):
-    def __init__(self, port=2920, host="0.0.0.0"):
+    def __init__(self, port=2920, host="127.0.0.1"):
         self.port = port
         self.host = host
         self.router = meager.router.Router()
