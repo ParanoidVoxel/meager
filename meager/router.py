@@ -3,7 +3,7 @@ class Router(object):
     def __init__(self):
         self.routes = []
 
-    def create_route_expression(self, route):
+    def create_route_expression(route):
         expression = re.sub(r'(<\w+>)', r'(?P\1.+)', route)
         return re.compile(f"^{expression}$")
 
