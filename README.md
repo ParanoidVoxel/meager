@@ -14,7 +14,7 @@ The module is heavily inspired by flask, and it's ease of use, and readability.
 ### Example returning html
 ```python
 import meager
-app = meager.Server()
+app = meager.Server(host="0.0.0.0", port=8080) # Set binding ip address and port, default is localhost:2090
 
 @app.router.route("/")
 def index(request):
