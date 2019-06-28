@@ -8,7 +8,7 @@ class Router(object):
         return re.compile(f"^{expression}$")
 
     def register_route(self, url, func, server_options):
-        pattern = create_route_expression(url)
+        pattern = self.create_route_expression(url)
         self.routes.append((pattern, func, server_options))
 
     def route(self, url, server_options={}, **options):
