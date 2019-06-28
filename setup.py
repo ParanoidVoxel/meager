@@ -4,7 +4,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(name="meager",
-    version="0.0.6",
+    version="0.0.7",
     description="A really lightweight and simple API server, built on the socketserver module",
     url="https://thevoxel.net/projects/meager",
     author="Vorap",
@@ -14,7 +14,7 @@ setuptools.setup(name="meager",
     packages=setuptools.find_packages(),
     long_description=long_description,
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
         "Operating System :: OS Independent"
     ]
 )
