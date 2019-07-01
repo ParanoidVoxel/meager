@@ -3,6 +3,8 @@ import meager.http
 import meager.logger
 import json
 import socketserver
+socketserver.TCPServer.allow_reuse_address = True
+
 
 class RequestHandler(socketserver.BaseRequestHandler):
     def handle(self):
