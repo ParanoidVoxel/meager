@@ -20,7 +20,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
             kwargs, function, server_options = route_match
             for key, value in server_options.items():
                 response[key] = value
-            response["content"] = function({"post": kwargs, "ip": self.client_address[0],"request": parsed})
+            response["content"] = function({"post": kwargs, "ip": self.client_address[0],"request": parsed}, **kwargs)
             self.request.sendall(meager.http.build_response(response).encode("utf-8"))
         else:
             self.request.sendall(b"HTTP/1.1 OK 404\r\nContent-Type: text/html\r\n\r\n<h1>404 not found</h1>")
