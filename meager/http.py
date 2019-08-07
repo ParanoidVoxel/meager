@@ -5,7 +5,7 @@ def headers(header_string):
         tmp["POST_DATA"] = {}
         for pair in header_string.split("\r\n\r\n")[1].split("&"):
             tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
-    for header in header_string.split("\r\n\r\n")[0]:
+    for header in header_string.split("\r\n\r\n")[0].split("\r\n"):
         tmp[header.split(": ")[0]] = header.split(": ")[1]
     return tmp
 
