@@ -2,16 +2,18 @@ import json
 def headers(header_string):
     tmp = {}
     if(header_string.startswith("POST")):
-        tmp["POST_FIELDS"] = {}
+        tmp["POST_DATA"] = {}
         for pair in header_string.split("\r\n\r\n")[1].split("&"):
-            tmp["POST_FIELDS"][pair.split("=")[0]] = pair.split("=")[1]
+            tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
+    for header in header_string.split("\r\n\r\n")[0]:
+        tmp[header.split(": ")[0]] = header.split(": ")[1]
     return tmp
 
 def parse(request):
     parsed = {}
     parsed["method"] = request.split()[0]
     parsed["url"] = request.split()[1]
-    parsed["data"] = headers(request)
+    parsed["headers"] = headers(request)
     return parsed
 
 def build_response(response_dict):
