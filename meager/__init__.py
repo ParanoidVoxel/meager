@@ -15,7 +15,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
         response = {
             "status": "OK 200",
             "http-version": "HTTP/1.1",
-            "content-type": "text/html"
+            "content-type": "text/html",
             }
 
         if(route_match):

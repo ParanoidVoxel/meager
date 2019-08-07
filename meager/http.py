@@ -23,9 +23,14 @@ def build_response(response_dict):
         response_dict["content-type"] = "application/json"
         response_dict["content"] = json.dumps(response_dict["content"])
 
+    if(isinstance(response_dict["content"], list)):
+        for header in response_dict["content"][0]:
+            response_dict[header.split(": ")[0]] = header.split(": ")[1]
+        response_dict["content"] = response_dict["content"][1]
+
     for key, value in response_dict.items():
-        if(key == "content"):
-            response_str += "\r\n\r\n" + value
-        else:
+        if not(key == "content" or key == http_status or key == http_version):
             response_str = response_str + "\r\n" + key + ": " + value
+
+    response_str += "\r\n\r\n" + response_dict["content"]
     return response_str
