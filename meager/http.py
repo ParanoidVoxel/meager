@@ -19,6 +19,8 @@ def parse(request):
 def build_response(response_dict):
     http_version = response_dict["http-version"]
     http_status = response_dict["status"]
+    del response_dict["status"]
+    del response_dict["http-version"]
     response_str = f"{http_version} {http_status}"
 
     if(isinstance(response_dict["content"], dict)):
