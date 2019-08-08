@@ -13,7 +13,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
         parsed = meager.http.parse(self.data)
         route_match = self.server._router.match_request(parsed["url"])
         response = {
-            "status": "OK 200",
+            "status": "200 OK",
             "http-version": "HTTP/1.1",
             "content-type": "text/html",
             }
