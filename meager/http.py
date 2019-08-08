@@ -22,6 +22,7 @@ def build_response(response_dict):
     del response_dict["status"]
     del response_dict["http-version"]
     response_str = f"{http_version} {http_status}"
+    print(response_str)
 
     if(isinstance(response_dict["content"], dict)):
         response_dict["content-type"] = "application/json"
