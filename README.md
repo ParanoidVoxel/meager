@@ -47,7 +47,7 @@ app.serve()
 import meager
 app = meager.Server()
 
-@app.router.route("/api/<name>")
+@app.router.route(request, "/api/<name>")
 def api(name):
     return {"status": "success", "name": name}
 
