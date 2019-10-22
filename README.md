@@ -39,5 +39,17 @@ example_dict = {"key1": "val1", "key2": "val2"}
 def index(request):
     return example_dict # It can detect if you're sending a dictionary
                         # and automatically changes the "Content-Type:" header to application/json 
+   
+app.serve()
+```                     
+### Dynamic GET example
+```python
+import meager
+app = meager.Server()
+
+@app.router.route("/api/<name>")
+def api(name):
+    return {"status": "success", "name": name}
+
 app.serve()
 ```
