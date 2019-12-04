@@ -1,12 +1,16 @@
 import json
 def headers(header_string):
     tmp = {}
-    if(header_string.startswith("POST")):
-        tmp["POST_DATA"] = {}
-        for pair in header_string.split("\r\n\r\n")[1].split("&"):
-            tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
     for header in header_string.split("\r\n\r\n")[0].split("\r\n")[1:]:
         tmp[header.split(": ")[0]] = header.split(": ")[1]
+
+    if(header_string.startswith("POST")):
+        if(tmp["Content-Type"] == "application/x-www-form-urlencoded"):
+            tmp["data"] = {}
+            for pair in header_string.split("\r\n\r\n")[1].split("&"):
+                tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
+        elif(tmp["Content-Type"] == "application/json"):
+            tmp["data"] = json.loads(header_string.split("\r\n\r\n")[1]
     return tmp
 
 def parse(request):

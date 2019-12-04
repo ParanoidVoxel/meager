@@ -11,7 +11,7 @@ class Router(object):
         pattern = self.create_route_expression(url)
         self.routes.append((pattern, func, server_options))
 
-    def route(self, url, server_options={}, **options):
+    def route(self, url, server_options={"headers": {}}, **options):
         def decorator(func):
             self.register_route(url, func, server_options)
             return func
