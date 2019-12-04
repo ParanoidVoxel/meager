@@ -11,6 +11,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
         self.data = self.request.recv(1024).decode("utf-8")
         meager.logger.log(__class__, f"Got request from {self.client_address[0]}")
         parsed = meager.http.parse(self.data)
+        print(parsed)
         route_match = self.server._router.match_request(parsed["url"])
         response = {
             "status": "OK 200",
