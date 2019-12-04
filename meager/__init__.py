@@ -11,7 +11,6 @@ class RequestHandler(socketserver.BaseRequestHandler):
         self.data = self.request.recv(1024).decode("utf-8")
         meager.logger.log(__class__, f"Got request from {self.client_address[0]}")
         parsed = meager.http.parse(self.data)
-        print(parsed)
         route_match = self.server._router.match_request(parsed["url"])
         response = {
             "status": "OK 200",
@@ -22,7 +21,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
         if(route_match):
             kwargs, function, server_options = route_match
             for key, value in server_options.items():
-                response["headers"][key] = value
+                parsed["headers"][key] = value
             response["content"] = function({"post": kwargs, "ip": self.client_address[0],"request": parsed}, **kwargs)
             self.request.sendall(meager.http.build_response(response).encode("utf-8"))
         else:
