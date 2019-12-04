@@ -10,7 +10,7 @@ def headers(header_string):
             for pair in header_string.split("\r\n\r\n")[1].split("&"):
                 tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
         elif(tmp["Content-Type"] == "application/json"):
-            tmp["data"] = json.loads(header_string.split("\r\n\r\n")[1]
+            tmp["data"] = json.loads(header_string.split("\r\n\r\n")[1])
     return tmp
 
 def parse(request):
