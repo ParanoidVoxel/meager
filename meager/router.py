@@ -7,11 +7,11 @@ class Router(object):
         expression = re.sub(r'(<\w+>)', r'(?P\1.+)', route)
         return re.compile(f"^{expression}$")
 
-    def register_route(self, url, func, server_options):
+    def register_route(self, url, func, server_options={}):
         pattern = self.create_route_expression(url)
         self.routes.append((pattern, func, server_options))
 
-    def route(self, url, server_options={"headers": {}}, **options):
+    def route(self, url, server_options={}, **options):
         def decorator(func):
             self.register_route(url, func, server_options)
             return func

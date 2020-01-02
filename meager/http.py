@@ -1,6 +1,6 @@
 import json
 def headers(header_string):
-    tmp = {}
+    tmp = {"POST_DATA": {}}
     for header in header_string.split("\r\n\r\n")[0].split("\r\n")[1:]:
         tmp[header.split(": ")[0]] = header.split(": ")[1]
 
