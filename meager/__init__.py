@@ -71,7 +71,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
                         key = parsed["headers"]["Sec-WebSocket-Key"]
                         meager.logger.log(__class__, f"Got websocket connection with key: {key}")
                         self.request.sendall(self.ws_handshake(key))
-                        function({"ip": self.client_address[0],"request": parsed}, self, **kwargs)
+                        function({"ip": self.client_address[0],"request": parsed, "handler": self}, , **kwargs)
                         return
             response["content"] = function({"ip": self.client_address[0],"request": parsed}, **kwargs)
             self.request.sendall(meager.http.build_response(response).encode("utf-8"))
