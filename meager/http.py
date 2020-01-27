@@ -5,7 +5,7 @@ def headers(header_string):
         tmp[header.split(": ")[0]] = header.split(": ")[1]
 
     if(header_string.startswith("POST")):
-        if(tmp["Content-Type"] == "application/x-www-form-urlencoded"):
+        if("application/x-www-form-urlencoded" in tmp["Content-Type"]):
             tmp["data"] = {}
             for pair in header_string.split("\r\n\r\n")[1].split("&"):
                 tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
