@@ -8,7 +8,7 @@ def headers(header_string):
         if("application/x-www-form-urlencoded" in tmp["Content-Type"]):
             tmp["data"] = {}
             for pair in header_string.split("\r\n\r\n")[1].split("&"):
-                tmp["POST_DATA"][pair.split("=")[0]] = pair.split("=")[1]
+                tmp["data"][pair.split("=")[0]] = pair.split("=")[1]
         elif(tmp["Content-Type"] == "application/json"):
             tmp["data"] = json.loads(header_string.split("\r\n\r\n")[1])
     return tmp

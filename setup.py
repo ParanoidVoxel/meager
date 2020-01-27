@@ -4,8 +4,8 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(name="meager",
-    version="0.3.3",
     description="A really lightweight and simple API server, built on the socketserver module",
+    version="0.3.4",
     url="https://thevoxel.net/projects/meager",
     author="Vorap",
     author_email="vorap@thevoxel.net",
