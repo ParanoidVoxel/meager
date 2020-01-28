@@ -27,14 +27,14 @@ def build_response(response_dict):
     del response_dict["http-version"]
     response_str = f"{http_version} {http_status}"
 
-    if(isinstance(response_dict["content"], dict)):
-        response_dict["content-type"] = "application/json"
-        response_dict["content"] = json.dumps(response_dict["content"])
-
     if(isinstance(response_dict["content"], list)):
         for header in response_dict["content"][0]:
             response_dict[header.split(": ")[0]] = header.split(": ")[1]
         response_dict["content"] = response_dict["content"][1]
+
+    if(isinstance(response_dict["content"], dict)):
+        response_dict["content-type"] = "application/json"
+        response_dict["content"] = json.dumps(response_dict["content"])
 
     for key, value in response_dict.items():
         if not(key == "content" or key == http_status or key == http_version):
